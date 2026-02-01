@@ -1,6 +1,6 @@
-import { z } from 'zod';
+import { z } from "zod";
 
-import { BaseResourceSchema } from './base';
+import { BaseResourceSchema, extractId, toId, toIdArray } from "./base";
 
 export const PeopleSchema = BaseResourceSchema.extend({
   name: z.string(),
@@ -11,9 +11,12 @@ export const PeopleSchema = BaseResourceSchema.extend({
   height: z.string(),
   mass: z.string(),
   skin_color: z.string(),
-  homeworld: z.url(),
-  films: z.array(z.url()),
-  species: z.array(z.url()),
-  starships: z.array(z.url()),
-  vehicles: z.array(z.url()),
-});
+  homeworld: toId,
+  films: toIdArray,
+  species: toIdArray,
+  starships: toIdArray,
+  vehicles: toIdArray,
+}).transform((data) => ({
+  ...data,
+  id: extractId(data.url),
+}));

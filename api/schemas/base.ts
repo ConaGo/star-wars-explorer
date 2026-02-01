@@ -1,6 +1,14 @@
 import { z } from 'zod';
 
-// Shared attributes for all resources
+// Helper to extract ID from SWAPI URL
+// e.g., "https://swapi.dev/api/people/1/" -> "1"
+// filter(Boolean) removes empty strings from split results
+export const extractId = (url: string) => url.split('/').filter(Boolean).pop() || '';
+
+export const toId = z.url().transform(extractId);
+export const toIdArray = z.array(z.url()).transform(urls => urls.map(extractId));
+
+// Base schema shared by all resources
 export const BaseResourceSchema = z.object({
   url: z.url(),
   created: z.iso.datetime(),
