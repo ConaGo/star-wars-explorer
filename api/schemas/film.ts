@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-import { BaseResourceSchema } from './base';
+import { BaseResourceSchema, extractId, toIdArray } from './base';
 
 export const FilmSchema = BaseResourceSchema.extend({
   title: z.string(),
@@ -9,9 +9,12 @@ export const FilmSchema = BaseResourceSchema.extend({
   director: z.string(),
   producer: z.string(),
   release_date: z.iso.date(),
-  characters: z.array(z.url()),
-  planets: z.array(z.url()),
-  starships: z.array(z.url()),
-  vehicles: z.array(z.url()),
-  species: z.array(z.url()),
-});
+  characters: toIdArray,
+  planets: toIdArray,
+  starships: toIdArray,
+  vehicles: toIdArray,
+  species: toIdArray,
+}).transform((data) => ({
+  ...data,
+  id: extractId(data.url),
+}));

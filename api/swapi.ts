@@ -1,6 +1,7 @@
 import z from 'zod';
 import { apiRequest } from './apiClient';
 import { PaginatedResponseSchema } from './schemas/base';
+import { FilmSchema } from './schemas/film';
 import { PeopleSchema } from './schemas/people';
 import { PlanetSchema } from './schemas/planet';
 
@@ -16,9 +17,14 @@ export const swapi = {
       return apiRequest(`planets/${id}/`, PlanetSchema);
     }
   },
+
+  films: {
+    byId: async (id: string) => {
+      return apiRequest(`films/${id}/`, FilmSchema);
+    }
+  },
   /**
    * Statically fetch all pages for a resource and inject IDs.
-   * T is the Zod Schema (e.g., PeopleSchema)
    */
   fetchAll: async <T extends z.ZodType<Record<string, any>>>(
     endpoint: string,

@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-import { BaseResourceSchema } from './base';
+import { BaseResourceSchema, extractId, toIdArray } from './base';
 
 export const PlanetSchema = BaseResourceSchema.extend({
   name: z.string(),
@@ -12,6 +12,9 @@ export const PlanetSchema = BaseResourceSchema.extend({
   climate: z.string(),
   terrain: z.string(),
   surface_water: z.string(),
-  residents: z.array(z.string().url()),
-  films: z.array(z.string().url()),
-});
+  residents: toIdArray,
+  films: toIdArray,
+}).transform((data) => ({
+  ...data,
+  id: extractId(data.url),
+}));
