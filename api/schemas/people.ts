@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-import { BaseResourceSchema } from '../schema/base';
+import { BaseResourceSchema } from './base';
 
 export const PeopleSchema = BaseResourceSchema.extend({
   name: z.string(),

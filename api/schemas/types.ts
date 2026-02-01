@@ -2,7 +2,7 @@ import { z } from 'zod';
 import { PeopleSchema } from "./people";
 import { FilmSchema } from "./film";
 import { PlanetSchema } from "./planet";
-import { PaginatedResponseSchema } from '../schema/base';
+import { PaginatedResponseSchema } from './base';
 
 
 export type People = z.infer<typeof PeopleSchema>;
