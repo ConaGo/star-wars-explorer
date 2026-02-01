@@ -1,26 +1,74 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0a0a0a;
+  --foreground: #fafafa;
+
+  /* Unified color palette */
+  --accent: #facc15;
+  --accent-dim: #eab308;
+
+  --surface: #18181b;
+  --surface-light: #27272a;
+  --border: #3f3f46;
+  --border-light: #52525b;
+
+  --text: #fafafa;
+  --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
+  --color-accent-dim: var(--accent-dim);
+  --color-surface: var(--surface);
+  --color-surface-light: var(--surface-light);
+  --color-border: var(--border);
+  --color-border-light: var(--border-light);
+  --color-text: var(--text);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Typography utilities */
+.label-xs {
+  @apply text-xs font-bold uppercase tracking-widest;
+}
+
+.label-mono {
+  @apply text-xs font-mono uppercase tracking-widest;
+}
+
+.label-micro {
+  @apply text-[10px] font-mono uppercase tracking-wide;
+}
+
+.heading-hero {
+  @apply text-5xl md:text-7xl font-black uppercase italic tracking-tighter;
+}
+
+.heading-page {
+  @apply text-5xl md:text-6xl font-black uppercase italic tracking-tighter;
+}
+
+.heading-row {
+  @apply text-lg font-bold uppercase tracking-tight;
+}
+
+.data-label {
+  @apply text-[10px] uppercase tracking-wide;
+}
+
+.data-value {
+  @apply text-sm tracking-wide;
 }
