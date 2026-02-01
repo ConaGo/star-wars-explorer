@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
 import { Planet } from '@/api/schemas/types';
+import { BackButton } from '@/components/BackButton';
 import { DataRow } from '@/components/DataRow';
 
 interface Props {
@@ -10,12 +11,7 @@ interface Props {
 export function PlanetDetail({ planet }: Props) {
     return (
         <div className="max-w-3xl mx-auto">
-            <Link
-                href="/planets"
-                className="label-mono text-text-muted hover:text-accent transition-colors flex items-center gap-2 mb-12 group"
-            >
-                <span className="group-hover:-translate-x-1 transition-transform">←</span> Back to Planets
-            </Link>
+            <BackButton href="/planets" label="Back to Planets" />
 
             <header className="border-b border-border pb-8 mb-12">
                 <div className="label-micro text-accent mb-2 animate-pulse">

@@ -1,5 +1,6 @@
 import { PeopleSchema } from '@/api/schemas/people';
 import { swapi } from '@/api/swapi';
+import { BackButton } from '@/components/BackButton';
 import { PeopleList } from '@/components/people/PeopleList';
 import { Metadata } from 'next';
 
@@ -13,6 +14,8 @@ export default async function PeoplePage() {
 
     return (
         <>
+            <BackButton href="/" label="Back to Home" />
+
             <div className="flex items-center gap-2 mb-8 label-micro text-text-secondary">
                 <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
                 <span>Database Link: Active</span>

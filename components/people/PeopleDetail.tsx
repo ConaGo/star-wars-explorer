@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
 import { People } from '@/api/schemas/types';
+import { BackButton } from '@/components/BackButton';
 import { DataRow } from '@/components/DataRow';
 
 interface Props {
@@ -10,13 +11,7 @@ interface Props {
 export function PeopleDetail({ person }: Props) {
     return (
         <div className="max-w-3xl mx-auto">
-            {/* Navigation */}
-            <Link
-                href="/people"
-                className="label-mono text-text-muted hover:text-accent transition-colors flex items-center gap-2 mb-12 group"
-            >
-                <span className="group-hover:-translate-x-1 transition-transform">←</span> Back to Archives
-            </Link>
+            <BackButton href="/people" label="Back to Archives" />
 
             {/* Header Section */}
             <header className="border-b border-border pb-8 mb-12">
