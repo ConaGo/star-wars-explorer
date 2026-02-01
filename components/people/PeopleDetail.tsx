@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
 import { People } from '@/api/schemas/types';
+import { DataRow } from '@/components/DataRow';
 
 interface Props {
     person: People;
@@ -80,15 +81,6 @@ export function PeopleDetail({ person }: Props) {
                     </div>
                 </section>
             </div>
-        </div>
-    );
-}
-
-function DataRow({ label, value }: { label: string; value: string }) {
-    return (
-        <div className="flex justify-between border-b border-border pb-2">
-            <span className="data-label text-text-muted">{label}</span>
-            <span className="data-value text-text-secondary">{value}</span>
         </div>
     );
 }

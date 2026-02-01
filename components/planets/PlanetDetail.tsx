@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
 import { Planet } from '@/api/schemas/types';
+import { DataRow } from '@/components/DataRow';
 
 interface Props {
     planet: Planet;
@@ -88,15 +89,6 @@ export function PlanetDetail({ planet }: Props) {
                     )}
                 </section>
             </div>
-        </div>
-    );
-}
-
-function DataRow({ label, value }: { label: string; value: string }) {
-    return (
-        <div className="flex justify-between border-b border-border pb-2">
-            <span className="data-label text-text-muted">{label}</span>
-            <span className="data-value text-text-secondary">{value}</span>
         </div>
     );
 }
